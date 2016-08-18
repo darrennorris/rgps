@@ -1,0 +1,23 @@
+Package: rgps
+Type: Package
+Title: Functions to use gpx files
+Version: 0.1.0
+Author: Darren Norris
+Maintainer: Darren Norris <dnorris75@gmail.com>
+Description: Provides user friendly output from gpx files.
+  Processes .gpx producing .csv summaries and shapefiles of points and tracklogs.
+  Not pretty but it works.
+Imports:
+    graphics,
+    stats,
+    utils,
+    plyr,
+    dplyr,
+    plotKML,
+    raster,
+    stringr,
+    sp,
+    geosphere
+License: file LICENSE
+LazyData: TRUE
+RoxygenNote: 5.0.1
