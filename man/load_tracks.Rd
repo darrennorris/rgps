@@ -21,4 +21,3 @@ values in a data.frame.
 \dontrun{
 }
 }
-

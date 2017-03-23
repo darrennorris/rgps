@@ -9,7 +9,8 @@
 #' @param make_shape Optional. Logical (TRUE/FALSE). Write a shapefile with all tracklog points.
 #' @param do_waypoints Optional. Logical (TRUE/FALSE). Generate .csv with waypoints.
 #' @param make_shape_wp Optional. Logical (TRUE/FALSE). Generate shapefile with waypoints.
-#'
+#' @param type_csv Required. What type of .csv to export? ".csv" or ".csv2"
+#' 
 #' @return Will generate R objects and export .csv and shapefiles.
 #'
 #' @export
@@ -21,7 +22,8 @@
 #' }
 make_tracks <- function(folder_gpx, river_shape, folder_result,
                         date_start = NA, date_end = NA, make_shape = FALSE,
-                        do_waypoints = FALSE, make_shape_wp = FALSE){
+                        do_waypoints = FALSE, make_shape_wp = FALSE,
+                        type_csv = NA){
   # 1) load gpx
 
   # 1.1) list of .gpx files
@@ -170,6 +172,7 @@ if(length(selD) > 0) {all_tracks_summary <- all_tracks_summary[selD, ]}else{stop
 
   # 7) export tracks and summary
   fileend <- paste(format(Sys.time(),"%Y%m%d"), format(Sys.time(),"%H%M%S"), sep="_")
+  if(type_csv == ".csv2"){
   # 7.1 tracks .csv
   setwd(folder_result)
   namet <- paste(paste("all_tracks", fileend, sep="_"),".csv",sep="")
@@ -178,6 +181,17 @@ if(length(selD) > 0) {all_tracks_summary <- all_tracks_summary[selD, ]}else{stop
   # 7.2 summary .csv
   namesum <- paste(paste("summary_all_tracks", fileend, sep="_"),".csv",sep="")
   write.csv2(all_tracks_summary_out, namesum)
+  }else{
+    # 7.1 tracks .csv
+    setwd(folder_result)
+    namet <- paste(paste("all_tracks", fileend, sep="_"),".csv",sep="")
+    write.csv(df_tracks_out2, namet)
+    
+    # 7.2 summary .csv
+    namesum <- paste(paste("summary_all_tracks", fileend, sep="_"),".csv",sep="")
+    write.csv(all_tracks_summary_out, namesum)
+    
+  }
 
 
   #7.3 write shape

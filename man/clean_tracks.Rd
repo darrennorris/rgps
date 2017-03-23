@@ -20,4 +20,3 @@ necessary for summaries of effort (date, time, distance, speed etc).
 \dontrun{
 }
 }
-

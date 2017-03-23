@@ -14,7 +14,6 @@
 
 load_waypoints <- function(x){
   myfile <- x$aname
-
   gp1 <- plotKML::readGPX(myfile, metadata = TRUE, bounds = TRUE,
                  waypoints = TRUE, tracks = FALSE, routes = FALSE)
 

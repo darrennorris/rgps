@@ -34,4 +34,3 @@ Import waypoints from .gpx files and convert to
 \dontrun{
 }
 }
-

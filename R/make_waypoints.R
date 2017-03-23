@@ -87,6 +87,8 @@ trips$trip_endpx <- as.POSIXct(strptime(trips$trip_end,"%Y-%m-%d %H:%M:%S",
 selZ <- which(is.na(trips$zone)==FALSE)
 trips <- trips[selZ, ]
 
+if(nrow(trips)>0){
+# need to add ifelse here so when trip zones are all NA, dftrips is created
 mseq <- function(x){
   dfout <- data.frame(sadt = seq(x$trip_startpx, x$trip_endpx, by="sec"))
 }
@@ -94,6 +96,11 @@ mseq <- function(x){
 dftrips <- plyr::ddply(trips, c("zone","trip_id", "trip_start", "trip_end"),
                        .fun=mseq)
 dftrips$adtAP <- format(dftrips$sadt, usetz=TRUE)
+}else{
+dftrips <- data.frame(zone = NA, trip_id = NA, trip_start = NA, trip_end = NA,
+                      sadt = NA, adtAP = NA)
+}
+
 gc()
 
 dfc2 <- merge(dfc1, dftrips, all.x=TRUE, by.x = c('zone', 'adtAP'),

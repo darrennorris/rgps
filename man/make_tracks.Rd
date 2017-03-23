@@ -6,7 +6,7 @@
 \usage{
 make_tracks(folder_gpx, river_shape, folder_result, date_start = NA,
   date_end = NA, make_shape = FALSE, do_waypoints = FALSE,
-  make_shape_wp = FALSE)
+  make_shape_wp = FALSE, type_csv = NA)
 }
 \arguments{
 \item{folder_gpx}{Location of folder containing .gpx files.}
@@ -24,6 +24,8 @@ make_tracks(folder_gpx, river_shape, folder_result, date_start = NA,
 \item{do_waypoints}{Optional. Logical (TRUE/FALSE). Generate .csv with waypoints.}
 
 \item{make_shape_wp}{Optional. Logical (TRUE/FALSE). Generate shapefile with waypoints.}
+
+\item{type_csv}{Required. What type of .csv to export? ".csv" or ".csv2"}
 }
 \value{
 Will generate R objects and export .csv and shapefiles.
@@ -35,4 +37,3 @@ Import and summarise tracklogs and waypoints.
 \dontrun{
 }
 }
-
