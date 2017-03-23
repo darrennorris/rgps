@@ -11,18 +11,20 @@
 #' @param date_start Optional. Character of start date ("dd/mm/yyyy").
 #' @param date_end Character of end date ("dd/mm/yyyy").
 #' @param make_shape_wp Logical (TRUE/FALSE). Generate shapefile with waypoints.
+#' @param way_csv Required. What type of .csv to export? ".csv" or ".csv2"
 #'
 #' @return Writes a .csv file and shapefiles with waypoints from .gpx files.
 #' @export
 #' @importFrom "stats" "na.omit" "sd"
 #' @importFrom "utils" "write.csv2"
+#' @importFrom "utils" "write.csv"
 #'
 #' @examples
 #' \dontrun{
 #' }
 make_waypoints <- function(folder_gpx, river_shape, folder_result,
                            track_data = NA, date_start = NA, date_end = NA,
-                           make_shape_wp = FALSE){
+                           make_shape_wp = FALSE, way_csv = NA){
 
 setwd(folder_gpx)
 input_path<-getwd() # target directory
@@ -161,7 +163,10 @@ fileend <- paste(format(Sys.time(),"%Y%m%d"), format(Sys.time(),"%H%M%S"), sep="
 # 6.1 waypoints .csv
 setwd(folder_result)
 namew <- paste(paste("all_waypoints", fileend, sep="_"),".csv",sep="")
+
+if(way_csv == ".csv2"){
 write.csv2(df_outwp, namew)
+}else{write.csv(df_outwp, namew)}
 
 #6.3 write shape
 if(make_shape_wp!=FALSE){

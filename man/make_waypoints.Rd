@@ -5,7 +5,7 @@
 \title{Import and summarise waypoints.}
 \usage{
 make_waypoints(folder_gpx, river_shape, folder_result, track_data = NA,
-  date_start = NA, date_end = NA, make_shape_wp = FALSE)
+  date_start = NA, date_end = NA, make_shape_wp = FALSE, way_csv = NA)
 }
 \arguments{
 \item{folder_gpx}{Location of folder containing .gpx files.}
@@ -22,6 +22,8 @@ Used to include trip details.}
 \item{date_end}{Character of end date ("dd/mm/yyyy").}
 
 \item{make_shape_wp}{Logical (TRUE/FALSE). Generate shapefile with waypoints.}
+
+\item{way_csv}{Required. What type of .csv to export? ".csv" or ".csv2"}
 }
 \value{
 Writes a .csv file and shapefiles with waypoints from .gpx files.

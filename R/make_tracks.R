@@ -168,7 +168,8 @@ if(length(selD) > 0) {all_tracks_summary <- all_tracks_summary[selD, ]}else{stop
     list_waypoints <- make_waypoints( folder_gpx = folder_gpx, river_shape = river_shape,
                                         folder_result = folder_result, track_data = list_track,
                                         date_start = date_start, date_end = date_end,
-                                        make_shape_wp = make_shape_wp)
+                                        make_shape_wp = make_shape_wp,
+                                      way_csv = type_csv)
     }
 
   # 7) export tracks and summary
