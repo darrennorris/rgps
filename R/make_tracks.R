@@ -16,6 +16,7 @@
 #' @export
 #' @importFrom "stats" "na.omit" "sd"
 #' @importFrom "utils" "write.csv2"
+#' @importFrom "utils" "write.csv"
 #'
 #' @examples
 #' \dontrun{
