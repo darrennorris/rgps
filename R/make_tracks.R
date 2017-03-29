@@ -95,10 +95,12 @@ make_tracks <- function(folder_gpx, river_shape, folder_result,
 
  # select dates
  if (is.na(date_start)==FALSE){
+   stoptext <- "No .gpx tracklogs in specified dates. Check dates are valid. 
+   Check date format is valid (dd/mm/yyyy). Change dates to NA to run all days."
    mdates <- seq(as.Date(date_start, format="%d/%m/%Y",tz="America/Belem"),
                  as.Date(date_end, format="%d/%m/%Y",tz="America/Belem"), by ="day")
 selD <- which(all_tracks_summary$adate %in% mdates)
-if(length(selD) > 0) {all_tracks_summary <- all_tracks_summary[selD, ]}else{stop("no tracks in specified dates")}
+if(length(selD) > 0) {all_tracks_summary <- all_tracks_summary[selD, ]}else{stop(stoptext)}
 #all_tracks_summary <- all_tracks_summary[selD, ]
 }
 

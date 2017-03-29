@@ -58,10 +58,12 @@ dfc1$atimeAP <- format(dfc1$adt, "%H:%M:%S",tz="America/Belem")
 # select waypoints collected on specified dates
 #date_start = NA
 if (is.na(date_start)==FALSE){
+  stoptextw <- "No .gpx waypoints in specified dates. Check dates are valid. 
+   Check date format is valid (dd/mm/yyyy). Change dates to NA to run all days."
   mdates <- seq(as.Date(date_start, format="%d/%m/%Y",tz="America/Belem"),
                 as.Date(date_end, format="%d/%m/%Y",tz="America/Belem"), by ="day")
   selD <- which(dfc1$adate %in% mdates)
-  if(length(selD) > 0) {dfc1 <- dfc1[selD, ]}else{stop("no waypoints in specified dates")}
+  if(length(selD) > 0) {dfc1 <- dfc1[selD, ]}else{stop(stoptextw)}
   #all_tracks_summary <- all_tracks_summary[selD, ]
 }
 
