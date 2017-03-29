@@ -41,8 +41,8 @@ clean_tracks <- function(x){
   dfc2 <- dfc2[selT, ]
 
   #select only year with census
-  selYear <- which(dfc2$ayear %in% c("2015", "2016"))
-  dfc2 <- dfc2[selYear, ]
+  #selYear <- which(dfc2$ayear %in% c("2015", "2016","2017"))
+  #dfc2 <- dfc2[selYear, ]
 
   #sort
   dfc3 <- dfc2[order(dfc2$adtnum), ]
