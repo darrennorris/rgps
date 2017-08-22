@@ -24,8 +24,9 @@ load_tracks <- function(x){
                       time = c("2001-01-01T16:18:35Z","2001-01-01T16:22:35Z"))
   } else {
     mydataf <- function(x){
-      if (length(names(data.frame(x))) == 4){
+      if (length(names(data.frame(x))) %in% c(4,5)) {
         df1 <- data.frame(x)
+        df1 <- df1[, 1:4]
         names(df1) <- c("lon", "lat", "ele", "time")
         df1}else{
           df1 <- data.frame(x,time=NA)
