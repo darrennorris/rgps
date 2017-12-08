@@ -25,7 +25,7 @@ load_waypoints <- function(x){
     df1 <-  data.frame(gp1$waypoints)
   }
   # correct date in cases when .gpx file is saved and transfered
- if(length(names(df1)) %in% c(8,9,10)){
+ if(length(names(df1)) %in% c(7,8,9,10)){
    #library(stringr)
    df1$adate <- stringr::str_sub(df1$time,1,10)
   df1$atime <- stringr::str_sub(df1$time,-9,-2)
