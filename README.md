@@ -11,7 +11,8 @@ Install development version from github.
 3. load: `library("rgps")`
 
 ## Package example:
-1) Need to specify 3 locations.`
+1) Need to specify 3 locations.
+
 1.1) Location of shapefile with river zones
 1.2) Location of folder with .gpx files censu
 1.3) Location of folder for results
@@ -23,6 +24,7 @@ Install development version from github.
 ` fr <- "/Location/of/result/folder"`
 
 2) run
+
 ` list_track_data <- rgps::make_tracks(`
 
 `   folder_gpx = fg, folder_result = fr,  river_shape = rs,`
