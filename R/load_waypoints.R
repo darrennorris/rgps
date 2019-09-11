@@ -25,23 +25,21 @@ load_waypoints <- function(x){
     df1 <-  data.frame(gp1$waypoints)
   }
   # correct date in cases when .gpx file is saved and transfered
- if(length(names(df1)) %in% c(7,8,9,10)){
-   #library(stringr)
-   df1$adate <- stringr::str_sub(df1$time,1,10)
-  df1$atime <- stringr::str_sub(df1$time,-9,-2)
-  df1$adatetime <- paste(df1$adate, df1$atime)
-  df1$adt <- as.POSIXct(strptime(df1$adatetime,"%Y-%m-%d %H:%M:%S", tz="UTC"))
- }else{
-   Sys.setlocale(category = "LC_TIME", locale = "English")
-   #library(stringr)
-   df1$adate <- format(as.Date(stringr::str_sub(df1$cmt,1,9),"%d-%b-%y"), "%Y-%m-%d")
-   df1$atime <- stringr::str_sub(df1$cmt,10,18)
-   df1$adatetime <- paste(df1$adate, df1$atime)
-   df1$adt <- as.POSIXct(strptime(df1$adatetime,"%Y-%m-%d %H:%M:%S", tz="America/Belem"))
-   df1$adt <- as.POSIXct(strptime(format(df1$adt, "%Y-%m-%d %H:%M:%S", tz="UTC"),
-                       "%Y-%m-%d %H:%M:%S", tz="UTC"))
-
-   Sys.setlocale(category = "LC_TIME", locale = "Portuguese_Brazil.1252")
-   }
+  if("cmt" %in% names(df1)){
+    Sys.setlocale(category = "LC_TIME", locale = "English")
+    df1$adate <- format(as.Date(stringr::str_sub(df1$cmt,1,9),"%d-%b-%y"), "%Y-%m-%d")
+    df1$atime <- stringr::str_sub(df1$cmt,10,18)
+    df1$adatetime <- paste(df1$adate, df1$atime)
+    df1$adt <- as.POSIXct(strptime(df1$adatetime,"%Y-%m-%d %H:%M:%S", tz="America/Belem"))
+    df1$adt <- as.POSIXct(strptime(format(df1$adt, "%Y-%m-%d %H:%M:%S", tz="UTC"),
+                                   "%Y-%m-%d %H:%M:%S", tz="UTC"))
+    Sys.setlocale(category = "LC_TIME", locale = "Portuguese_Brazil.1252")
+  }else{
+    #library(stringr)
+    df1$adate <- stringr::str_sub(df1$time,1,10)
+    df1$atime <- stringr::str_sub(df1$time,-9,-2)
+    df1$adatetime <- paste(df1$adate, df1$atime)
+    df1$adt <- as.POSIXct(strptime(df1$adatetime,"%Y-%m-%d %H:%M:%S", tz="UTC"))
+  }
   df1
 }
