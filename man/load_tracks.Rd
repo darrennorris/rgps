@@ -19,5 +19,18 @@ values in a data.frame.
 }
 \examples{
 \dontrun{
+# 1) need to specify 3 locations.
+#1.1) Location of shapefile with river zones
+rs <- system.file("shapes/riverzones.shp", package = "rgps")
+#1.2) Location of folder with .gpx files censu
+fg <- system.file("gpx", package = "rgps") 
+#1.3) Location of folder for results
+fr <- "/Location/of/result/folder"
+# 2) run
+list_track_data <- rgps::make_tracks(
+  folder_gpx = fg, folder_result = fr,  river_shape = rs,
+  do_waypoints = TRUE, make_shape = FALSE,
+  make_shape_wp = FALSE,
+  type_csv = ".csv")
 }
 }
