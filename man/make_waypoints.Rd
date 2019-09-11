@@ -5,7 +5,8 @@
 \title{Import and summarise waypoints.}
 \usage{
 make_waypoints(folder_gpx, river_shape, folder_result, track_data = NA,
-  date_start = NA, date_end = NA, make_shape_wp = FALSE, way_csv = NA)
+  date_start = NA, date_end = NA, make_shape_wp = FALSE,
+  way_csv = NA)
 }
 \arguments{
 \item{folder_gpx}{Location of folder containing .gpx files.}
