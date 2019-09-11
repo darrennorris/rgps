@@ -25,12 +25,4 @@ Install development version from github.
 
 2) run
 
-` list_track_data <- rgps::make_tracks(`
-
-`   folder_gpx = fg, folder_result = fr,  river_shape = rs,`
-
-`   do_waypoints = TRUE, make_shape = FALSE,`
-
-`  make_shape_wp = FALSE,`
-
-`   type_csv = ".csv")`
+`list_track_data <- rgps::make_tracks(folder_gpx = fg, folder_result = fr, river_shape = rs,   do_waypoints = TRUE, make_shape = FALSE,  make_shape_wp = FALSE, type_csv = ".csv")`
